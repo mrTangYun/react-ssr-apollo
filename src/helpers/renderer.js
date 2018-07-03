@@ -35,7 +35,9 @@ export default async (req) => {
 function Html({ content, state }) {
     return (
         <html>
-            <head></head>
+            <head>
+                <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+            </head>
             <body>
                 <div id="root" dangerouslySetInnerHTML={{ __html: content }} />
                 <script dangerouslySetInnerHTML={{
