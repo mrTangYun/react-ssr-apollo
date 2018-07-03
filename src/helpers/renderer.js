@@ -41,6 +41,7 @@ function Html({ content, state }) {
                 <script dangerouslySetInnerHTML={{
                     __html: `window.__APOLLO_STATE__=${JSON.stringify(state).replace(/</g, '\\u003c')};`,
                 }} />
+                <script src="bundle.js"></script>
             </body>
         </html>
     );
