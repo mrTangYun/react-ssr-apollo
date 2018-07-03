@@ -5,9 +5,10 @@ import { BrowserRouter } from 'react-router-dom';
 import Routes from './Routes';
 import ApolloClient, { InMemoryCache } from "apollo-boost";
 import { ApolloProvider } from "react-apollo";
+import config from '../config';
 
 const client = new ApolloClient({
-    uri: "https://w5xlvm3vzz.lp.gql.zone/graphql",
+    uri: config.apiUri,
     cache: new InMemoryCache().restore(window.__APOLLO_STATE__),
 });
 

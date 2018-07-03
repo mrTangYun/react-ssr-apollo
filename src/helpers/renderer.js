@@ -5,6 +5,7 @@ import { StaticRouter } from 'react-router-dom';
 import ApolloClient from "apollo-boost";
 import { ApolloProvider, getDataFromTree } from "react-apollo";
 import Routes from '../client/Routes';
+import config from '../config';
 import { createHttpLink } from 'apollo-link-http';
 
 global.fetch = fetch;
@@ -12,7 +13,8 @@ export default async (req) => {
     const client = new ApolloClient({
         ssrMode: true,
         // 请注意，这是 SSR 服务器用于连接到 API 服务器的接口，因此我们需要确保它不被防火墙屏蔽
-        uri: 'https://w5xlvm3vzz.lp.gql.zone/graphql',
+        // uri: 'https://w5xlvm3vzz.lp.gql.zone/graphql',
+        uri: config.apiUri,
     });
     const App = (
         <ApolloProvider client={client}>
