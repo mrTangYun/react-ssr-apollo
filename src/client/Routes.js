@@ -5,13 +5,11 @@ import { Query } from "react-apollo";
 import gql from "graphql-tag";
 
 export default () => {
-    return (
-        <div>
-            <Route exact path="/" component={Home} />
-            <Route path="/hi" component={() => 'Hi'} />
-            <Route path="/exchangeRates" component={ExchangeRates} />
-        </div>
-    );
+    return [
+            <Route exact path="/" component={Home} key="1" />,
+            <Route path="/hi" component={() => 'Hi'} key="2"  />,
+            <Route path="/exchangeRates" component={ExchangeRates} key="3"  />
+        ];
 };
 
 const ExchangeRates = () => (
@@ -30,7 +28,9 @@ const ExchangeRates = () => (
             if (error) return <p>Error :(</p>;
 
             return data.rates.map(({ currency, rate }) => (
-                <div key={currency}>
+                <div key={currency} onClick={() => {
+                    console.log(rate);
+                }}>
                     <p>{`${currency}: ${rate}`}</p>
                 </div>
             ));
