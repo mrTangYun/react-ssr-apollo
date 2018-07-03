@@ -5,8 +5,11 @@ const app = express();
 
 app.use(express.static('public'));
 
-app.get('*', (req, res) => {
-    res.send(renderer(req));
+app.get('*', async (req, res) => {
+    res.status(200);
+    const result = await renderer(req);
+    res.send(result);
+    res.end();
 });
 
 
